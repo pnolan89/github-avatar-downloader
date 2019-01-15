@@ -1,3 +1,4 @@
+require('dotenv').config();
 var request = require('request');
 var fs = require('fs');
 var secrets = require('./secrets');
@@ -43,6 +44,9 @@ function downloadImageByURL(url, filepath) {
       console.log('Download Complete!');
     });
 }
+
+
+
 
 
 
