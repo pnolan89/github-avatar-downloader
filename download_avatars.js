@@ -6,18 +6,20 @@ var myArgs = process.argv.slice(2);
 console.log('Welcome to the GitHub Avatar Downloader!');
 
 function getRepoContributors(repoOwner, repoName, cb) {
-
+  if (repoOwner === undefined || repoName === undefined) {
+    console.log("Error: Please enter valid repo owner and repo name as arguments.");
+  } else {
   var options = {
     url: "https://api.github.com/repos/" + repoOwner + "/" + repoName + "/contributors",
     headers: {
       'User-Agent': 'request',
       'Authorization': "token " + secrets.GITHUB_TOKEN
-    }
-  };
-
-  request(options, function(err, res, body) {
-    cb(err, body);
-  });
+      }
+    };
+    request(options, function(err, res, body) {
+      cb(err, body);
+    });
+  }
 }
 
 getRepoContributors(myArgs[0], myArgs[1], function(err, result) {
