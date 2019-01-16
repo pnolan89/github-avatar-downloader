@@ -10,7 +10,6 @@ if (myArgs.length <= 1) {
     process.exit();
   }
 
-
 repoStatus(myArgs[0], myArgs[1], function (status) {
   switch(status) {
     // When repo is not found
@@ -67,7 +66,6 @@ function getRepoContributors(repoOwner, repoName, cb) {
     cb(err, body);
   });
 }
-
 
 function downloadImageByURL(url, filepath) {
   request(url)
